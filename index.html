@@ -1,0 +1,427 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Happy Raksha Bandhan ❤️</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #fff1f8, #ffe0ec, #fff7e6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Background glowing circles */
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.5;
+      z-index: -1;
+    }
+
+    body::before {
+      background: #ff69a6;
+      top: -60px;
+      left: -60px;
+    }
+
+    body::after {
+      background: #ffc857;
+      bottom: -70px;
+      right: -60px;
+    }
+
+    .card {
+      width: 92%;
+      max-width: 500px;
+      padding: 35px 25px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.88);
+      border-radius: 30px;
+      box-shadow: 0 20px 60px rgba(160, 55, 100, 0.2);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      animation: cardEntry 1s ease;
+      position: relative;
+      z-index: 2;
+    }
+
+    @keyframes cardEntry {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .rakhi {
+      font-size: 75px;
+      display: inline-block;
+      animation: floatRakhi 3s ease-in-out infinite;
+      filter: drop-shadow(0 8px 8px rgba(180, 70, 100, 0.2));
+    }
+
+    @keyframes floatRakhi {
+      0%, 100% {
+        transform: translateY(0) rotate(-5deg);
+      }
+      50% {
+        transform: translateY(-12px) rotate(5deg);
+      }
+    }
+
+    h1 {
+      margin-top: 10px;
+      font-size: clamp(32px, 8vw, 48px);
+      color: #c2185b;
+      line-height: 1.15;
+    }
+
+    h2 {
+      margin-top: 10px;
+      color: #e65170;
+      font-size: clamp(21px, 5vw, 28px);
+    }
+
+    .divider {
+      width: 80px;
+      height: 4px;
+      margin: 18px auto;
+      border-radius: 20px;
+      background: linear-gradient(90deg, #ff4081, #ffc107);
+    }
+
+    .message {
+      color: #5f4050;
+      font-size: 17px;
+      line-height: 1.8;
+      margin: 15px 0;
+    }
+
+    .highlight {
+      color: #d81b60;
+      font-weight: bold;
+    }
+
+    .love-box {
+      margin: 22px 0;
+      padding: 18px;
+      border-radius: 20px;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 64, 129, 0.1),
+        rgba(255, 193, 7, 0.13)
+      );
+      color: #703b50;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .heart {
+      font-size: 28px;
+      animation: heartbeat 1.3s infinite;
+      display: inline-block;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% {
+        transform: scale(1);
+      }
+      15% {
+        transform: scale(1.25);
+      }
+      30% {
+        transform: scale(1);
+      }
+      45% {
+        transform: scale(1.2);
+      }
+    }
+
+    button {
+      border: none;
+      padding: 14px 25px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+      background: linear-gradient(135deg, #e91e63, #ff7043);
+      box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 12px 25px rgba(233, 30, 99, 0.4);
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #9b7181;
+    }
+
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      top: -20px;
+      width: 10px;
+      height: 18px;
+      z-index: 10;
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-30px) rotate(0deg);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    /* Floating hearts */
+    .floating-heart {
+      position: fixed;
+      bottom: -30px;
+      font-size: 20px;
+      pointer-events: none;
+      animation: floatUp 5s linear forwards;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      to {
+        transform: translateY(-110vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .card {
+        padding: 28px 18px;
+        border-radius: 24px;
+      }
+
+      .rakhi {
+        font-size: 62px;
+      }
+
+      .message {
+        font-size: 15.5px;
+        line-height: 1.7;
+      }
+
+      .love-box {
+        font-size: 14.5px;
+        padding: 15px;
+      }
+
+      button {
+        width: 100%;
+        padding: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+
+    <div class="rakhi">🪷🧿</div>
+
+    <h1>Happy Raksha Bandhan</h1>
+
+    <h2>To My Beautiful Sister ❤️</h2>
+
+    <div class="divider"></div>
+
+    <p class="message">
+      Dear <span class="highlight">Sister</span>,
+      <br><br>
+
+      You are not just my sister, you are one of the most
+      special people in my life. From annoying me for no reason
+      to always standing by my side, every little moment with you
+      is precious.
+    </p>
+
+    <div class="love-box">
+      No matter how much we fight, tease each other,
+      or argue over silly things, I will always be there for you.
+      <br><br>
+
+      <strong>
+        You can always count on me — today, tomorrow,
+        and forever. ❤️
+      </strong>
+    </div>
+
+    <div class="heart">❤️</div>
+
+    <p class="message">
+      May you always stay happy, keep smiling,
+      and achieve everything you dream of.
+      <br>
+      Lucky to have you as my sister! 🥰
+    </p>
+
+    <button onclick="celebrate()">
+      🎉 Celebrate Raksha Bandhan
+    </button>
+
+    <div class="footer">
+      Made with ❤️ especially for my sister
+    </div>
+
+  </div>
+
+  <script>
+
+    // Create confetti
+    function createConfetti(amount = 100) {
+
+      const colors = [
+        "#ff4081",
+        "#e91e63",
+        "#ffc107",
+        "#ff7043",
+        "#9c27b0",
+        "#42a5f5",
+        "#66bb6a"
+      ];
+
+      for (let i = 0; i < amount; i++) {
+
+        const confetti = document.createElement("div");
+
+        confetti.classList.add("confetti");
+
+        confetti.style.left = Math.random() * 100 + "vw";
+
+        confetti.style.background =
+          colors[Math.floor(Math.random() * colors.length)];
+
+        confetti.style.width =
+          Math.random() * 8 + 5 + "px";
+
+        confetti.style.height =
+          Math.random() * 14 + 8 + "px";
+
+        confetti.style.animationDuration =
+          Math.random() * 3 + 3 + "s";
+
+        confetti.style.animationDelay =
+          Math.random() * 1.5 + "s";
+
+        confetti.style.transform =
+          `rotate(${Math.random() * 360}deg)`;
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+          confetti.remove();
+        }, 6000);
+      }
+    }
+
+
+    // Floating hearts
+    function createHeart() {
+
+      const heart = document.createElement("div");
+
+      heart.classList.add("floating-heart");
+
+      heart.innerHTML =
+        ["❤️", "💖", "💕", "💗", "💝"][
+          Math.floor(Math.random() * 5)
+        ];
+
+      heart.style.left =
+        Math.random() * 100 + "vw";
+
+      heart.style.animationDuration =
+        Math.random() * 3 + 4 + "s";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 7000);
+    }
+
+
+    // Celebration button
+    function celebrate() {
+
+      createConfetti(180);
+
+      // Extra hearts
+      for (let i = 0; i < 15; i++) {
+        setTimeout(createHeart, i * 150);
+      }
+
+    }
+
+
+    // Automatic confetti when page loads
+    window.addEventListener("load", () => {
+
+      setTimeout(() => {
+        createConfetti(120);
+      }, 500);
+
+    });
+
+
+    // Continuous floating hearts
+    setInterval(createHeart, 1800);
+
+  </script>
+
+</body>
+</html>
+```
